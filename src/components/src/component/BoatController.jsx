@@ -139,10 +139,10 @@ const BoatController = () => {
       <div className=''>
         <h1 className='text-[]18px font-medium text-gray-600'>Convayor -</h1>
         <div className='flex justify-between items-center mt-3'>
-        <button onClick={()=>BoatOnOff("con")} className='text-[20px] bg-green-500 text-white border border-gray-300 shadow-md rounded-md py-1.5 px-8 cursor-pointer'>
+        <button onClick={()=>BoatOnOff("con")} className='text-[20px] active:bg-white active:text-green-500 active:border active:border-green-500 bg-green-500 text-white border border-gray-300 shadow-md rounded-md py-1.5 px-8 cursor-pointer'>
             Start
         </button>
-        <button onClick={()=>BoatOnOff("coff")} className='text-[20px] bg-red-500 text-white border border-gray-300 shadow-md rounded-md py-1.5 px-8 cursor-pointer'>
+        <button onClick={()=>BoatOnOff("coff")} className='text-[20px] active:bg-white active:text-red-500 active:border active:border-red-500 bg-red-500 text-white border border-gray-300 shadow-md rounded-md py-1.5 px-8 cursor-pointer'>
             Stop
         </button>
         </div>
@@ -151,10 +151,10 @@ const BoatController = () => {
       <div className='mt-6'>
         <h1 className='text-[]18px font-medium text-gray-600'>Gurbage Dumping -</h1>
         <div className='flex justify-between items-center mt-3'>
-        <button onClick={()=>BoatOnOff("gon")} className='text-[20px] bg-green-500 text-white border border-gray-300 shadow-md rounded-md py-1.5 px-8 cursor-pointer'>
+        <button onClick={()=>BoatOnOff("gon")} className='text-[20px] active:bg-white active:text-green-500 active:border active:border-green-500 bg-green-500 text-white border border-gray-300 shadow-md rounded-md py-1.5 px-8 cursor-pointer'>
             Start
         </button>
-        <button onClick={()=>BoatOnOff("goff")} className='text-[20px] bg-red-500 text-white border border-gray-300 shadow-md rounded-md py-1.5 px-8 cursor-pointer'>
+        <button onClick={()=>BoatOnOff("goff")} className='text-[20px] active:bg-white active:text-red-500 active:border active:border-red-500 bg-red-500 text-white border border-gray-300 shadow-md rounded-md py-1.5 px-8 cursor-pointer'>
             Stop
         </button>
         </div>
