@@ -24,6 +24,11 @@ const sendCommand = async (command) => {
 };
 
 const BoatController = () => {
+  
+  const [conveyorState, setConveyorState] = useState(null); // "on" | "off"
+  const [garbageState, setGarbageState] = useState(null); // "on" | "off"
+ 
+
   const [speed, setSpeed] = useState(5); // speed level (0-9)
   const sendSpeedToESP = async (value) => {
     try {
@@ -49,11 +54,28 @@ const BoatController = () => {
     onTouchEnd: () => sendCommand('S'),
   });
 
-  const BoatOnOff = async (value) => {
+  const COnOff = async (value) => {
     console.log(value)
     try {
       await axios.get(`${BASE_URL}/move/${value}`);
       console.log(`${value}`);
+
+      if (value === 'con') setConveyorState('on');
+      else if (value === 'coff') setConveyorState('off');
+
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+    const GOnOff = async (value) => {
+    console.log(value)
+    try {
+      await axios.get(`${BASE_URL}/move/${value}`);
+      console.log(`${value}`);
+
+      if (value === 'gon') setGarbageState('on');
+      else if (value === 'goff') setGarbageState('off');
     } catch (err) {
       console.error(err);
     }
@@ -139,10 +161,18 @@ const BoatController = () => {
       <div className=''>
         <h1 className='text-[]18px font-medium text-gray-600'>Convayor -</h1>
         <div className='flex justify-between items-center mt-3'>
-        <button onClick={()=>BoatOnOff("con")} className='text-[20px] active:bg-white active:text-green-500 active:border active:border-green-500 bg-green-500 text-white border border-gray-300 shadow-md rounded-md py-1.5 px-8 cursor-pointer'>
+        <button onClick={()=>COnOff("con")} className={`text-[20px] shadow-md rounded-md py-1.5 px-8 cursor-pointer ${
+            conveyorState === 'on'
+              ? 'bg-white text-green-500 border-green-500'
+              : 'bg-green-500 text-white border-gray-300'
+          }`}>
             Start
         </button>
-        <button onClick={()=>BoatOnOff("coff")} className='text-[20px] active:bg-white active:text-red-500 active:border active:border-red-500 bg-red-500 text-white border border-gray-300 shadow-md rounded-md py-1.5 px-8 cursor-pointer'>
+        <button onClick={()=>COnOff("coff")} className={`text-[20px shadow-md rounded-md py-1.5 px-8 cursor-pointer ${
+              conveyorState === 'off'
+                ? 'bg-white text-red-500 border-red-500'
+                : 'bg-red-500 text-white border-gray-300'
+            }`}>
             Stop
         </button>
         </div>
@@ -151,10 +181,18 @@ const BoatController = () => {
       <div className='mt-6'>
         <h1 className='text-[]18px font-medium text-gray-600'>Gurbage Dumping -</h1>
         <div className='flex justify-between items-center mt-3'>
-        <button onClick={()=>BoatOnOff("gon")} className='text-[20px] active:bg-white active:text-green-500 active:border active:border-green-500 bg-green-500 text-white border border-gray-300 shadow-md rounded-md py-1.5 px-8 cursor-pointer'>
+        <button onClick={()=>GOnOff("gon")} className={`text-[20px] shadow-md rounded-md py-1.5 px-8 cursor-pointer ${
+            garbageState === 'on'
+              ? 'bg-white text-green-500 border-green-500'
+              : 'bg-green-500 text-white border-gray-300'
+          }`}>
             Start
         </button>
-        <button onClick={()=>BoatOnOff("goff")} className='text-[20px] active:bg-white active:text-red-500 active:border active:border-red-500 bg-red-500 text-white border border-gray-300 shadow-md rounded-md py-1.5 px-8 cursor-pointer'>
+        <button onClick={()=>GOnOff("goff")} className={`text-[20px] shadow-md rounded-md py-1.5 px-8 cursor-pointer ${
+            garbageState === 'off'
+              ? 'bg-white text-red-500 border-red-500'
+              : 'bg-red-500 text-white border-gray-300'
+          }`}>
             Stop
         </button>
         </div>
