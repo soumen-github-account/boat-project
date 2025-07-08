@@ -11,7 +11,7 @@ import { FaAngleDoubleDown } from "react-icons/fa";
 
 import { IoMdFlashlight } from "react-icons/io";
 
-const BASE_URL = 'http://localhost:8000'; // Backend proxy
+const BASE_URL = import.meta.env.VITE_BACKEND_URL; // Backend proxy
 
 // 🧠 Send movement commands
 const sendCommand = async (command) => {
